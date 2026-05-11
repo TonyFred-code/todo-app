@@ -14,6 +14,24 @@
     />
 
     <title>Frontend Mentor | Todo app</title>
+    <script>
+      (function () {
+        try {
+          const stored = localStorage.getItem(
+            "todo_app_theme_local_storage_key"
+          );
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+
+          const shouldUseDark = stored === "dark" || (!stored && prefersDark);
+
+          if (shouldUseDark) {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (_) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
