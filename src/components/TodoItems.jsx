@@ -14,7 +14,7 @@ export default function TodoItems({
 }) {
   return (
     <section>
-      <ul className="bg-white rounded-md *:not-last:border-b *:border-gray-300">
+      <ul className="bg-white dark:bg-navy-900 rounded-md *:not-last:border-b *:border-gray-300">
         {todoItemsList.map((todoItem) => {
           const { id, content, done } = todoItem;
 
@@ -41,7 +41,7 @@ export default function TodoItems({
           </div>
           <button
             type="button"
-            className="cursor-pointer text-gray-600 hover:text-navy-900"
+            className="cursor-pointer text-gray-600 hover:text-navy-900 dark:hover:text-gray-300"
             onClick={handleClearDone}
           >
             Clear completed

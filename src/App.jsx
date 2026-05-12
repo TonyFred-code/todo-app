@@ -53,10 +53,10 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 bg-[url('/images/bg-mobile-light.jpg')] bg-size-[100%_30%] bg-no-repeat py-12 px-6">
-      <Header />
-      <main className="py-8 flex flex-col items-center">
-        <div className="space-y-6 w-full max-w-lg lg:max-w-2xl">
+    <div className="min-h-screen bg-gray-50 dark:bg-navy-950 bg-[url('/images/bg-mobile-light.jpg')] dark:bg-[url('/images/bg-mobile-dark.jpg')] md:bg-[url('/images/bg-desktop-light.jpg')] md:dark:bg-[url('/images/bg-desktop-dark.jpg')] bg-size-[100%_40dvh] bg-no-repeat py-12 px-6">
+      <main className="flex flex-col items-center">
+        <div className="space-y-6 w-full max-w-lg md:max-w-xl lg:max-w-2xl">
+          <Header />
           <Form createTodoItem={handleAddTask} />
           <TodoItems
             todoItemsList={renderedTodoItems}

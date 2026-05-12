@@ -19,7 +19,7 @@ export default function TodoItem({ handleDelete, done, content, toggleDone }) {
       </button>
       <p
         onClick={toggleDone}
-        className={`flex-1 cursor-pointer after:absolute relative after:top-1/2 after:left-0 after:w-full after:h-0.5 after:will-change-transform after:-translate-y-1/2 after:bg-[currentColor] after:origin-left after:transition-all after:duration-300 after:ease-in ${done ? "text-gray-300 after:scale-x-100" : "text-navy-850 after:scale-x-0"}`}
+        className={`flex-1 cursor-pointer after:absolute relative after:top-1/2 after:left-0 after:w-full after:h-0.5 after:will-change-transform after:-translate-y-1/2 after:bg-[currentColor] after:origin-left after:transition-all after:duration-300 after:ease-in ${done ? "text-gray-300 after:scale-x-100" : "text-navy-850 dark:text-gray-300 after:scale-x-0"}`}
       >
         {content}
       </p>
