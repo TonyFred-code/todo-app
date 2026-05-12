@@ -12,7 +12,7 @@ export default function App() {
     handleAddTask,
     todoItems,
     handleDeleteTask,
-    toggleDoneTodo,
+    handleToggleTodoDone,
     clearCompleted,
   } = useTasks(getDefaultTodoItems());
   const [activeFilter, setActiveFilter] = useState(FILTERS.ALL);
@@ -49,7 +49,7 @@ export default function App() {
           <TodoItems
             todoItemsList={renderedTodoItems}
             deleteTodo={handleDeleteTask}
-            toggleTodoDone={toggleDoneTodo}
+            toggleTodoDone={handleToggleTodoDone}
             handleClearDone={clearCompleted}
             activeFilter={activeFilter}
             activeTodoItemsCount={activeTodoItemsCount}

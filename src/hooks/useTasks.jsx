@@ -52,7 +52,7 @@ export default function useTasks(initialTasks) {
     });
   }
 
-  function toggleDoneTodo(todoItem) {
+  function handleToggleTodoDone(todoItem) {
     dispatch({
       type: ACTIONS.CHANGED,
       todoItem: {
@@ -79,7 +79,7 @@ export default function useTasks(initialTasks) {
     handleAddTask,
     todoItems,
     handleDeleteTask,
-    toggleDoneTodo,
+    handleToggleTodoDone,
     clearCompleted,
   };
 }
