@@ -56,7 +56,7 @@ TodoItems.propTypes = {
   todoItemsList: arrayOf(
     shape({
       done: bool,
-      id: number,
+      id: string,
       content: string,
     })
   ).isRequired,

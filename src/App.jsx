@@ -5,19 +5,7 @@ import TodoItems from "./components/TodoItems.jsx";
 import useTasks from "./hooks/useTasks.jsx";
 import { FILTERS } from "./constants/filters.js";
 import FilterTodoItems from "./components/FilterTodoItems.jsx";
-
-const defaultTodoItems = [
-  {
-    id: 0,
-    content: "Something",
-    done: false,
-  },
-  {
-    id: 1,
-    content: "Another",
-    done: false,
-  },
-];
+import { DEFAULT_TODO_ITEMS } from "./data/defaultTodoItems.js";
 
 export default function App() {
   const {
@@ -26,7 +14,7 @@ export default function App() {
     handleDeleteTask,
     toggleDoneTodo,
     clearCompleted,
-  } = useTasks(defaultTodoItems);
+  } = useTasks(DEFAULT_TODO_ITEMS);
   const [activeFilter, setActiveFilter] = useState(FILTERS.ALL);
 
   const activeTodoItemsCount = todoItems.filter((item) => !item.done).length;
