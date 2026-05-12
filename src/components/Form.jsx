@@ -23,6 +23,9 @@ export default function Form({ createTodoItem }) {
     <section>
       <form onSubmit={handleFormSubmit} autoCapitalize="sentences">
         <div className="bg-white dark:bg-navy-900 rounded-md flex gap-4 items-center py-5 px-8 md:gap-6">
+          <label htmlFor="todo" className="sr-only">
+            Create a todo item
+          </label>
           <input
             type="text"
             name="todo"
