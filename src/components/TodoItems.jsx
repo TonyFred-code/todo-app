@@ -20,6 +20,7 @@ export default function TodoItems({
 
           return (
             <TodoItem
+              id={id}
               key={id}
               content={content}
               done={done}
