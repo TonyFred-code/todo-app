@@ -40,7 +40,7 @@ export default function TodoItem({
       </p>
       <button
         type="button"
-        className="lg:group-hover:visible lg:invisible flex items-center justify-center size-6 cursor-pointer"
+        className="delete-btn flex items-center justify-center size-6 cursor-pointer"
         onClick={handleDelete}
         aria-label="Delete todo"
       >
