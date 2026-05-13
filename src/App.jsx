@@ -5,28 +5,16 @@ import TodoItems from "./components/TodoItems.jsx";
 import useTasks from "./hooks/useTasks.jsx";
 import { FILTERS } from "./constants/filters.js";
 import FilterTodoItems from "./components/FilterTodoItems.jsx";
-
-const defaultTodoItems = [
-  {
-    id: 0,
-    content: "Something",
-    done: false,
-  },
-  {
-    id: 1,
-    content: "Another",
-    done: false,
-  },
-];
+import { getDefaultTodoItems } from "./lib/todoItemUtils.js";
 
 export default function App() {
   const {
     handleAddTask,
     todoItems,
     handleDeleteTask,
-    toggleDoneTodo,
+    handleToggleTodoDone,
     clearCompleted,
-  } = useTasks(defaultTodoItems);
+  } = useTasks(getDefaultTodoItems());
   const [activeFilter, setActiveFilter] = useState(FILTERS.ALL);
 
   const activeTodoItemsCount = todoItems.filter((item) => !item.done).length;
@@ -53,15 +41,15 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 bg-[url('/images/bg-mobile-light.jpg')] bg-size-[100%_30%] bg-no-repeat py-12 px-6">
-      <Header />
-      <main className="py-8 flex flex-col items-center">
-        <div className="space-y-6 w-full max-w-lg lg:max-w-2xl">
+    <div className="min-h-screen bg-gray-50 dark:bg-navy-950 bg-[url('/images/bg-mobile-light.jpg')] dark:bg-[url('/images/bg-mobile-dark.jpg')] md:bg-[url('/images/bg-desktop-light.jpg')] md:dark:bg-[url('/images/bg-desktop-dark.jpg')] bg-size-[100%_40dvh] bg-no-repeat py-12 px-6">
+      <main className="flex flex-col items-center">
+        <div className="space-y-6 w-full max-w-lg md:max-w-xl lg:max-w-2xl">
+          <Header />
           <Form createTodoItem={handleAddTask} />
           <TodoItems
             todoItemsList={renderedTodoItems}
             deleteTodo={handleDeleteTask}
-            toggleTodoDone={toggleDoneTodo}
+            toggleTodoDone={handleToggleTodoDone}
             handleClearDone={clearCompleted}
             activeFilter={activeFilter}
             activeTodoItemsCount={activeTodoItemsCount}

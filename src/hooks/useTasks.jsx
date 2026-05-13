@@ -1,5 +1,6 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { ACTIONS } from "../constants/tasksReducer.js";
+import { TODO_ITEMS_LOCAL_STORAGE_KEY } from "../constants/todoItem.js";
 
 function taskReducer(todoItems, action) {
   switch (action.type) {
@@ -51,7 +52,7 @@ export default function useTasks(initialTasks) {
     });
   }
 
-  function toggleDoneTodo(todoItem) {
+  function handleToggleTodoDone(todoItem) {
     dispatch({
       type: ACTIONS.CHANGED,
       todoItem: {
@@ -67,11 +68,18 @@ export default function useTasks(initialTasks) {
     });
   }
 
+  useEffect(() => {
+    localStorage.setItem(
+      TODO_ITEMS_LOCAL_STORAGE_KEY,
+      JSON.stringify(todoItems)
+    );
+  }, [todoItems]);
+
   return {
     handleAddTask,
     todoItems,
     handleDeleteTask,
-    toggleDoneTodo,
+    handleToggleTodoDone,
     clearCompleted,
   };
 }

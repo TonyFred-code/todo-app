@@ -22,7 +22,10 @@ export default function Form({ createTodoItem }) {
   return (
     <section>
       <form onSubmit={handleFormSubmit} autoCapitalize="sentences">
-        <div className="bg-white py-3 px-6 rounded-md flex gap-4 items-center">
+        <div className="bg-white dark:bg-navy-900 rounded-md flex gap-4 items-center py-5 px-8 md:gap-6">
+          <label htmlFor="todo" className="sr-only">
+            Create a todo item
+          </label>
           <input
             type="text"
             name="todo"
@@ -30,7 +33,7 @@ export default function Form({ createTodoItem }) {
             value={text}
             onChange={handleUpdateText}
             placeholder="Create a new todo..."
-            className="flex-1 outline-none caret-blue-500 min-w-0"
+            className="flex-1 outline-none caret-blue-500 min-w-0 text-navy-900 dark:text-gray-600"
           />
           <button
             type="submit"

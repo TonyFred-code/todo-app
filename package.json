@@ -1,7 +1,7 @@
 {
   "name": "todo-app-main",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "repository": {
     "type": "git",
@@ -15,8 +15,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "md:lint": "markdownlint-cli2 '**/*.md' '#node_modules'",
-    "md:lint:fix": "markdownlint-cli2 '**/*.md' --fix '#node_modules'",
+    "md:lint": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
+    "md:lint:fix": "markdownlint-cli2 \"**/*.md\" --fix \"#node_modules\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
@@ -47,7 +48,6 @@
     "lint-staged": "^16.4.0",
     "markdownlint-cli2": "^0.22.1",
     "prettier": "^3.8.3",
-    "prop-types": "^15.8.1",
     "tailwindcss": "^4.2.4",
     "vite": "^8.0.4"
   }
