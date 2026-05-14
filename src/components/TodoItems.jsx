@@ -2,6 +2,9 @@ import { arrayOf, bool, func, number, shape, string } from "prop-types";
 import TodoItem from "./TodoItem.jsx";
 import { pluralize } from "../lib/pluralize.js";
 import FilterTodoItems from "./FilterTodoItems.jsx";
+import { Reorder } from "motion/react";
+import { FILTERS } from "../constants/filters.js";
+import { useRef } from "react";
 
 export default function TodoItems({
   todoItemsList,
@@ -11,22 +14,46 @@ export default function TodoItems({
   activeFilter,
   switchFilter,
   activeTodoItemsCount,
+  handleReorder,
 }) {
+  const isDragging = useRef(null);
+
+  function handleToggleTodoDone(todoItem) {
+    if (isDragging.current) return;
+
+    toggleTodoDone(todoItem);
+  }
+
   return (
     <section>
-      <ul className="bg-white dark:bg-navy-900 rounded-md *:not-last:border-b *:border-gray-300">
+      <Reorder.Group
+        className="bg-white dark:bg-navy-900 rounded-md *:not-last:border-b *:border-gray-300"
+        values={todoItemsList}
+        onReorder={(newOrder) => handleReorder(newOrder)}
+      >
         {todoItemsList.map((todoItem) => {
           const { id, content, done } = todoItem;
 
           return (
-            <TodoItem
-              id={id}
+            <Reorder.Item
               key={id}
-              content={content}
-              done={done}
-              handleDelete={() => deleteTodo(id)}
-              toggleDone={() => toggleTodoDone(todoItem)}
-            />
+              value={todoItem}
+              drag={activeFilter === FILTERS.ALL ? "y" : false}
+              onDrag={() => (isDragging.current = true)}
+              onDragEnd={() => {
+                setTimeout(() => {
+                  isDragging.current = false;
+                }, 300);
+              }}
+            >
+              <TodoItem
+                id={id}
+                content={content}
+                done={done}
+                handleDelete={() => deleteTodo(id)}
+                toggleDone={() => handleToggleTodoDone(todoItem)}
+              />
+            </Reorder.Item>
           );
         })}
         <li className="flex justify-between py-5 px-8">
@@ -48,7 +75,7 @@ export default function TodoItems({
             Clear completed
           </button>
         </li>
-      </ul>
+      </Reorder.Group>
     </section>
   );
 }
@@ -67,4 +94,5 @@ TodoItems.propTypes = {
   switchFilter: func.isRequired,
   activeFilter: string.isRequired,
   activeTodoItemsCount: number.isRequired,
+  handleReorder: func.isRequired,
 };

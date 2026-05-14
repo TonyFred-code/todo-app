@@ -29,6 +29,9 @@ function taskReducer(todoItems, action) {
     case ACTIONS.CLEARED_DONE:
       return todoItems.filter((item) => !item.done);
 
+    case ACTIONS.REORDERED:
+      return action.todoItems;
+
     default:
       throw new Error("Unknown action: " + action.type);
   }
@@ -68,6 +71,13 @@ export default function useTasks(initialTasks) {
     });
   }
 
+  function handleReorder(newOrder) {
+    dispatch({
+      type: ACTIONS.REORDERED,
+      todoItems: newOrder,
+    });
+  }
+
   useEffect(() => {
     localStorage.setItem(
       TODO_ITEMS_LOCAL_STORAGE_KEY,
@@ -81,5 +91,6 @@ export default function useTasks(initialTasks) {
     handleDeleteTask,
     handleToggleTodoDone,
     clearCompleted,
+    handleReorder,
   };
 }

@@ -14,6 +14,7 @@ export default function App() {
     handleDeleteTask,
     handleToggleTodoDone,
     clearCompleted,
+    handleReorder,
   } = useTasks(getDefaultTodoItems());
   const [activeFilter, setActiveFilter] = useState(FILTERS.ALL);
 
@@ -54,6 +55,7 @@ export default function App() {
             activeFilter={activeFilter}
             activeTodoItemsCount={activeTodoItemsCount}
             switchFilter={switchFilter}
+            handleReorder={handleReorder}
           />
           <div className="flex py-4 px-8 bg-white rounded-md md:hidden w-full items-center justify-center gap-8">
             <FilterTodoItems
