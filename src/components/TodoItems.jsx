@@ -2,7 +2,7 @@ import { arrayOf, bool, func, number, shape, string } from "prop-types";
 import TodoItem from "./TodoItem.jsx";
 import { pluralize } from "../lib/pluralize.js";
 import FilterTodoItems from "./FilterTodoItems.jsx";
-import { Reorder } from "motion/react";
+import { AnimatePresence, Reorder } from "motion/react";
 import { FILTERS } from "../constants/filters.js";
 import { useRef } from "react";
 
@@ -25,37 +25,41 @@ export default function TodoItems({
   }
 
   return (
-    <section>
+    <section className="overflow-x-hidden">
       <Reorder.Group
         className="bg-white dark:bg-navy-900 rounded-md *:not-last:border-b *:border-gray-300"
         values={todoItemsList}
         onReorder={(newOrder) => handleReorder(newOrder)}
       >
-        {todoItemsList.map((todoItem) => {
-          const { id, content, done } = todoItem;
-
-          return (
-            <Reorder.Item
-              key={id}
-              value={todoItem}
-              drag={activeFilter === FILTERS.ALL ? "y" : false}
-              onDrag={() => (isDragging.current = true)}
-              onDragEnd={() => {
-                setTimeout(() => {
-                  isDragging.current = false;
-                }, 300);
-              }}
-            >
-              <TodoItem
-                id={id}
-                content={content}
-                done={done}
-                handleDelete={() => deleteTodo(id)}
-                toggleDone={() => handleToggleTodoDone(todoItem)}
-              />
-            </Reorder.Item>
-          );
-        })}
+        <AnimatePresence initial={false}>
+          {todoItemsList.map((todoItem) => {
+            const { id, content, done } = todoItem;
+            return (
+              <Reorder.Item
+                key={id}
+                value={todoItem}
+                drag={activeFilter === FILTERS.ALL ? "y" : false}
+                onDrag={() => (isDragging.current = true)}
+                onDragEnd={() => {
+                  setTimeout(() => {
+                    isDragging.current = false;
+                  }, 300);
+                }}
+                initial={{ x: -300, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 300, opacity: 0 }}
+              >
+                <TodoItem
+                  id={id}
+                  content={content}
+                  done={done}
+                  handleDelete={() => deleteTodo(id)}
+                  toggleDone={() => handleToggleTodoDone(todoItem)}
+                />
+              </Reorder.Item>
+            );
+          })}
+        </AnimatePresence>
         <li className="flex justify-between py-5 px-8">
           <span className="text-gray-600">
             {activeTodoItemsCount} {pluralize(activeTodoItemsCount, "item")}{" "}
