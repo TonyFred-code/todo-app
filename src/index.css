@@ -40,6 +40,41 @@
   }
 }
 
+@layer components {
+  .mark-done {
+    @apply rounded-full border-2 border-gray-300 cursor-pointer size-6 inline-flex items-center justify-center focus-visible:ring-2 focus-visible:ring-navy-850 dark:focus-visible:ring-gray-600;
+  }
+
+  .mark-done:hover {
+    background:
+      linear-gradient(var(--color-white), var(--color-white)) padding-box,
+      linear-gradient(
+          to bottom right,
+          var(--color-fuchsia-400),
+          var(--color-sky-400)
+        )
+        border-box;
+    @apply border-transparent;
+  }
+
+  .dark .mark-done:hover {
+    background:
+      linear-gradient(var(--color-navy-900), var(--color-navy-900)) padding-box,
+      linear-gradient(
+          to bottom right,
+          var(--color-fuchsia-400),
+          var(--color-sky-400)
+        )
+        border-box;
+    @apply border-transparent;
+  }
+
+  .mark-done[data-item-done="true"],
+  .mark-done[data-item-done="true"]:hover {
+    @apply bg-linear-to-br from-fuchsia-400 to-sky-400 border-none;
+  }
+}
+
 @media (hover: hover) and (min-width: 64rem) {
   .delete-btn {
     visibility: hidden;

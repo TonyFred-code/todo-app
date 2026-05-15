@@ -33,11 +33,11 @@ export default function Form({ createTodoItem }) {
             value={text}
             onChange={handleUpdateText}
             placeholder="Create a new todo..."
-            className="flex-1 outline-none caret-blue-500 min-w-0 text-navy-900 dark:text-gray-600"
+            className="flex-1 outline-none caret-blue-500 min-w-0 text-navy-900 dark:text-purple-300 placeholder:text-gray-600 placeholder:dark:text-purple-600"
           />
           <button
             type="submit"
-            className="-order-1 shrink-0 size-6 rounded-full border-2 border-gray-300 inline-block hover:border-gray-500 cursor-pointer hover:bg-gray-300"
+            className="-order-1 shrink-0 size-6 rounded-full border-2 border-gray-300 inline-block hover:ring-3 dark:hover:ring-gray-50/50 hover:ring-navy-850/10 cursor-pointer"
           >
             <span className="sr-only">submit</span>
           </button>
