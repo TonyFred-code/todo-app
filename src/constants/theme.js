@@ -1,6 +1,6 @@
 const THEME_STORAGE_KEY = "todo_app_theme_local_storage_key";
 /* 
-NOTE: keep theme_storage_key in sync with flash-screen prevention script
+NOTE: keep THEME_STORAGE_KEY in sync with flash-screen prevention script
 in index.html script tag
 */
 
