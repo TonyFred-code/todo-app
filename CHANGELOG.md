@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.0] - 2026-05-15
+
+### Added
+
+- Added gradient-type borders for mark as done label element in `TodoItem`
+- Added missing dark/light mode theme color tokens
+- Included gate to prevent animations for users that enabled reduced motion option
+- Included project actual live README.md documentation
+- Added project final v1 build screenshots
+
+### Changed
+
+- Updated the comment on `THEME_STORAGE_KEY` to ensure case consistency
+
+### Removed
+
+- Removed template README documentation file
+
+---
+
 ## [0.3.0] - 2026-05-15
 
 ### Added
