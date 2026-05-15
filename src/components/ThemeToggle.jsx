@@ -1,8 +1,9 @@
 import useTheme from "../hooks/useTheme.jsx";
 import { THEMES } from "../constants/theme.js";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 export default function ThemeToggle() {
+  const shouldReduceMotion = useReducedMotion();
   const { theme, setTheme } = useTheme();
   let pressed = theme === THEMES.LIGHT; // PRESSED: LIGHT, NOT-PRESSED: DARK;
 
@@ -19,9 +20,9 @@ export default function ThemeToggle() {
         {pressed ? (
           <motion.span
             key="sun"
-            initial={{ opacity: 0, scale: 0 }}
+            initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
+            exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
             className="inline-flex size-10 md:size-12 items-center justify-center"
           >
             <img src="/images/icon-sun.svg" alt="" />
@@ -30,9 +31,9 @@ export default function ThemeToggle() {
         ) : (
           <motion.span
             key="moon"
-            initial={{ opacity: 0, scale: 0 }}
+            initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
+            exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0 }}
             className="inline-flex size-10 md:size-12 items-center justify-center"
           >
             <img src="/images/icon-moon.svg" alt="" />
