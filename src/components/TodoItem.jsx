@@ -8,7 +8,7 @@ export default function TodoItem({
   toggleDone,
 }) {
   return (
-    <li className="group flex gap-4 md:gap-6 py-5 px-8 items-center">
+    <div className="group flex gap-4 md:gap-6 py-5 px-8 items-center">
       <div className="flex items-center justify-center">
         <input
           type="checkbox"
@@ -46,7 +46,7 @@ export default function TodoItem({
       >
         <img src="/images/icon-cross.svg" alt="" />
       </button>
-    </li>
+    </div>
   );
 }
 

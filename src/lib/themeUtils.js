@@ -7,9 +7,7 @@ function getSystemTheme() {
 }
 
 function getDefaultTheme() {
-  return (
-    localStorage.getItem(THEME_STORAGE_KEY) || getSystemTheme() || THEMES.LIGHT
-  );
+  return localStorage.getItem(THEME_STORAGE_KEY) || getSystemTheme();
 }
 
 export { getDefaultTheme, getSystemTheme };

@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.3.0] - 2026-05-15
+
+### Added
+
+- Added reordering logic for list only when filter is in `all` mode
+- Added scaling and opacity change animation for theme toggle icons
+- Added slide in/out animation for deletion/addition of todo items
+- Included comment about keeping `THEME_STORAGE_KEY` in sync where duplicated
+
+### Changed
+
+- Expanded on delete button visibility for larger screen making it stay
+  fully visible on smaller devices and devices without hover capabilities but
+  being visible only on hover on larger devices with hover capabilities
+- Passed default task initializer function (`getDefaultTodoItems`) as an initializer
+  for useReducer used by useTasks hook
+- Switched from `element.isRequired` to `node.isRequired` for `ThemeProvider` component
+  propTypes children prop type value
+
+### Removed
+
+- Removed unused propTypes declaration for `ThemeToggle` component
+- Removed theme default value fallback dead code in the `getDefaultTheme`
+  helper function
+
+---
+
 ## [0.2.0] - 2026-05-13
 
 ### Added

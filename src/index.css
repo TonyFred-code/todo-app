@@ -40,7 +40,7 @@
   }
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (min-width: 64rem) {
   .delete-btn {
     visibility: hidden;
   }

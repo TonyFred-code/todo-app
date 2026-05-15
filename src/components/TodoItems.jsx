@@ -2,6 +2,9 @@ import { arrayOf, bool, func, number, shape, string } from "prop-types";
 import TodoItem from "./TodoItem.jsx";
 import { pluralize } from "../lib/pluralize.js";
 import FilterTodoItems from "./FilterTodoItems.jsx";
+import { AnimatePresence, Reorder } from "motion/react";
+import { FILTERS } from "../constants/filters.js";
+import { useRef } from "react";
 
 export default function TodoItems({
   todoItemsList,
@@ -11,24 +14,52 @@ export default function TodoItems({
   activeFilter,
   switchFilter,
   activeTodoItemsCount,
+  handleReorder,
 }) {
-  return (
-    <section>
-      <ul className="bg-white dark:bg-navy-900 rounded-md *:not-last:border-b *:border-gray-300">
-        {todoItemsList.map((todoItem) => {
-          const { id, content, done } = todoItem;
+  const isDragging = useRef(null);
 
-          return (
-            <TodoItem
-              id={id}
-              key={id}
-              content={content}
-              done={done}
-              handleDelete={() => deleteTodo(id)}
-              toggleDone={() => toggleTodoDone(todoItem)}
-            />
-          );
-        })}
+  function handleToggleTodoDone(todoItem) {
+    if (isDragging.current) return;
+
+    toggleTodoDone(todoItem);
+  }
+
+  return (
+    <section className="overflow-x-hidden">
+      <Reorder.Group
+        className="bg-white dark:bg-navy-900 rounded-md *:not-last:border-b *:border-gray-300"
+        values={todoItemsList}
+        onReorder={(newOrder) => handleReorder(newOrder)}
+      >
+        <AnimatePresence initial={false}>
+          {todoItemsList.map((todoItem) => {
+            const { id, content, done } = todoItem;
+            return (
+              <Reorder.Item
+                key={id}
+                value={todoItem}
+                drag={activeFilter === FILTERS.ALL ? "y" : false}
+                onDrag={() => (isDragging.current = true)}
+                onDragEnd={() => {
+                  setTimeout(() => {
+                    isDragging.current = false;
+                  }, 300);
+                }}
+                initial={{ x: -300, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 300, opacity: 0 }}
+              >
+                <TodoItem
+                  id={id}
+                  content={content}
+                  done={done}
+                  handleDelete={() => deleteTodo(id)}
+                  toggleDone={() => handleToggleTodoDone(todoItem)}
+                />
+              </Reorder.Item>
+            );
+          })}
+        </AnimatePresence>
         <li className="flex justify-between py-5 px-8">
           <span className="text-gray-600">
             {activeTodoItemsCount} {pluralize(activeTodoItemsCount, "item")}{" "}
@@ -48,7 +79,7 @@ export default function TodoItems({
             Clear completed
           </button>
         </li>
-      </ul>
+      </Reorder.Group>
     </section>
   );
 }
@@ -67,4 +98,5 @@ TodoItems.propTypes = {
   switchFilter: func.isRequired,
   activeFilter: string.isRequired,
   activeTodoItemsCount: number.isRequired,
+  handleReorder: func.isRequired,
 };
