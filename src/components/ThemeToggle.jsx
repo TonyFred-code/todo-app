@@ -1,4 +1,3 @@
-import { func, string } from "prop-types";
 import useTheme from "../hooks/useTheme.jsx";
 import { THEMES } from "../constants/theme.js";
 import { AnimatePresence, motion } from "motion/react";
@@ -44,8 +43,3 @@ export default function ThemeToggle() {
     </button>
   );
 }
-
-ThemeToggle.propTypes = {
-  theme: string,
-  setTheme: func,
-};
