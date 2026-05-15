@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getDefaultTheme } from "../lib/themeUtils.js";
 import ThemeContext from "./ThemeContext.jsx";
-import { element } from "prop-types";
+import { node } from "prop-types";
 import { THEME_STORAGE_KEY, THEMES } from "../constants/theme.js";
 
 export default function ThemeProvider({ children }) {
@@ -22,5 +22,5 @@ export default function ThemeProvider({ children }) {
 }
 
 ThemeProvider.propTypes = {
-  children: element.isRequired,
+  children: node.isRequired,
 };
