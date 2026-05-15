@@ -20,6 +20,10 @@
           const stored = localStorage.getItem(
             "todo_app_theme_local_storage_key"
           );
+          /*
+          NOTE: keep theme storage key in sync with copy in 
+          src/constants/theme.js
+          */
           const prefersDark = window.matchMedia(
             "(prefers-color-scheme: dark)"
           ).matches;
