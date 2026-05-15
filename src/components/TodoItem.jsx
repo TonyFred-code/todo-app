@@ -18,10 +18,7 @@ export default function TodoItem({
           onChange={toggleDone}
           checked={done}
         />
-        <label
-          htmlFor={id}
-          className={`rounded-full border border-gray-300 cursor-pointer size-6 inline-flex items-center justify-center ${done ? "bg-linear-to-br from-fuchsia-400 to-sky-400" : "bg-transparent"}`}
-        >
+        <label htmlFor={id} className="mark-done" data-item-done={done}>
           {done && (
             <span>
               <img src="/images/icon-check.svg" alt="" />
@@ -33,7 +30,7 @@ export default function TodoItem({
       <p className="flex-1">
         <label
           htmlFor={id}
-          className={`w-full inline-flex cursor-pointer after:absolute relative after:top-1/2 after:left-0 after:w-full after:h-0.5 after:will-change-transform after:-translate-y-1/2 after:bg-[currentColor] after:origin-left after:transition-all after:duration-300 after:ease-in ${done ? "text-gray-300 after:scale-x-100" : "text-navy-850 dark:text-gray-300 after:scale-x-0"}`}
+          className={`w-full inline-flex cursor-pointer after:absolute relative after:top-1/2 after:left-0 after:w-full after:h-0.5 after:will-change-transform after:-translate-y-1/2 after:bg-[currentColor] after:origin-left after:transition-all after:duration-300 after:ease-in ${done ? "text-gray-300 after:scale-x-100 dark:text-purple-800" : "text-navy-850 dark:text-purple-300 after:scale-x-0"}`}
         >
           {content}
         </label>

@@ -27,7 +27,7 @@ export default function TodoItems({
   return (
     <section className="overflow-x-hidden">
       <Reorder.Group
-        className="bg-white dark:bg-navy-900 rounded-md *:not-last:border-b *:border-gray-300"
+        className="bg-white dark:bg-navy-900 rounded-md *:not-last:border-b *:border-purple-300 dark:*:border-purple-800"
         values={todoItemsList}
         onReorder={(newOrder) => handleReorder(newOrder)}
       >
@@ -61,7 +61,7 @@ export default function TodoItems({
           })}
         </AnimatePresence>
         <li className="flex justify-between py-5 px-8">
-          <span className="text-gray-600">
+          <span className="text-gray-600 dark:text-purple-600">
             {activeTodoItemsCount} {pluralize(activeTodoItemsCount, "item")}{" "}
             left
           </span>
@@ -73,7 +73,7 @@ export default function TodoItems({
           </div>
           <button
             type="button"
-            className="cursor-pointer text-gray-600 hover:text-navy-900 dark:hover:text-gray-300"
+            className="cursor-pointer text-gray-600 hover:text-navy-900 dark:hover:text-purple-100  dark:text-purple-600"
             onClick={handleClearDone}
           >
             Clear completed

@@ -57,7 +57,7 @@ export default function App() {
             switchFilter={switchFilter}
             handleReorder={handleReorder}
           />
-          <div className="flex py-4 px-8 bg-white rounded-md md:hidden w-full items-center justify-center gap-8">
+          <div className="flex py-4 px-8 bg-white dark:bg-navy-900 rounded-md md:hidden w-full items-center justify-center gap-8">
             <FilterTodoItems
               switchFilter={switchFilter}
               activeFilter={activeFilter}
