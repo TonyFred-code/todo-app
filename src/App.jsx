@@ -15,7 +15,7 @@ export default function App() {
     handleToggleTodoDone,
     clearCompleted,
     handleReorder,
-  } = useTasks(getDefaultTodoItems());
+  } = useTasks(getDefaultTodoItems);
   const [activeFilter, setActiveFilter] = useState(FILTERS.ALL);
 
   const activeTodoItemsCount = todoItems.filter((item) => !item.done).length;

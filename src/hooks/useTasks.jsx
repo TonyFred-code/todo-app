@@ -37,8 +37,8 @@ function taskReducer(todoItems, action) {
   }
 }
 
-export default function useTasks(initialTasks) {
-  const [todoItems, dispatch] = useReducer(taskReducer, initialTasks);
+export default function useTasks(initTasks) {
+  const [todoItems, dispatch] = useReducer(taskReducer, undefined, initTasks);
 
   function handleAddTask(content) {
     dispatch({
